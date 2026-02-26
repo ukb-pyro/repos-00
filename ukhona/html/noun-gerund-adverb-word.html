@@ -9,9 +9,6 @@
 <meta property="og:title" content="Terrain: Becoming, Indifferently">
 <meta property="og:description" content="Stop · Worrying · Love · Bomb · Regardless — A Psychogeography of the Stack">
 <meta property="og:type" content="article">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Terrain: Becoming, Indifferently">
-<meta name="twitter:description" content="Stop · Worrying · Love · Bomb · Regardless — A Psychogeography of the Stack">
 
 <!-- CENTRALIZED ASSETS (Don't update) -->
 <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" type="image/x-icon">
@@ -31,22 +28,71 @@
 
 <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-<!-- DISTRIBUTED ASSETS (Please use styles different from this!!!) -->
+
 <style>
 
-/* ── PALETTE: Overexposed print. White paper, dense ink, one danger color. ── */
+/* ═══════════════════════════════════════════════════
+   THEME TOKENS — Light & Dark
+   Light: cream paper, dark ink
+   Dark:  deep navy/charcoal, warm cream text
+═══════════════════════════════════════════════════ */
 :root {
-  --paper: #f7f4ee;
-  --ink:   #0e0e0e;
-  --ink2:  #2a2a2a;
-  --ink3:  #555;
-  --rule:  #bbb;
-  --rule2: #ddd;
-  --danger: #c0392b;
-  --safe:   #1a5276;
-  --mono: 'JetBrains Mono', monospace;
-  --serif: 'EB Garamond', Georgia, serif;
+  color-scheme: light dark;
+
+  /* ── LIGHT MODE ── */
+  --paper:    #f7f4ee;
+  --ink:      #0e0e0e;
+  --ink2:     #2a2a2a;
+  --ink3:     #555;
+  --rule:     #bbb;
+  --rule2:    #ddd;
+  --danger:   #c0392b;
+  --safe:     #1a5276;
+  --schema-bg: #0e0e0e;
+  --schema-text: #f7f4ee;
+
+  --mono:    'JetBrains Mono', monospace;
+  --serif:   'EB Garamond', Georgia, serif;
   --display: 'Cinzel', Georgia, serif;
+
+  /* toggle */
+  --toggle-bg: #e8e3d8;
+  --toggle-knob: #0e0e0e;
+}
+
+/* ── DARK MODE OVERRIDES ── */
+[data-theme="dark"] {
+  --paper:    #141820;        /* deep navy-charcoal */
+  --ink:      #e8dfc8;        /* warm cream — readable on dark */
+  --ink2:     #c8bfa8;        /* slightly dimmer cream */
+  --ink3:     #8a8272;        /* muted warm grey */
+  --rule:     #3a3830;        /* dark warm separator */
+  --rule2:    #272520;        /* subtler separator */
+  --danger:   #e05a4a;        /* brightened red for dark bg */
+  --safe:     #4a9aba;        /* brighter blue for dark bg */
+  --schema-bg: #0a0c10;       /* almost-black for code block */
+  --schema-text: #d4c9a8;
+
+  --toggle-bg: #2a2820;
+  --toggle-knob: #e8dfc8;
+}
+
+/* ── OS-LEVEL dark (when no explicit toggle) ── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:    #141820;
+    --ink:      #e8dfc8;
+    --ink2:     #c8bfa8;
+    --ink3:     #8a8272;
+    --rule:     #3a3830;
+    --rule2:    #272520;
+    --danger:   #e05a4a;
+    --safe:     #4a9aba;
+    --schema-bg: #0a0c10;
+    --schema-text: #d4c9a8;
+    --toggle-bg: #2a2820;
+    --toggle-knob: #e8dfc8;
+  }
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -58,7 +104,53 @@ body {
   font-family: var(--serif);
   font-size: 18px;
   line-height: 1.85;
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
+/* ── THEME TOGGLE ── */
+.theme-toggle {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.5rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+
+.toggle-switch {
+  position: relative;
+  width: 2.4rem;
+  height: 1.25rem;
+  background: var(--toggle-bg);
+  border: 1px solid var(--rule);
+  border-radius: 0;           /* square, matches editorial aesthetic */
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 0.15rem;
+  left: 0.15rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  background: var(--toggle-knob);
+  transition: transform 0.25s ease;
+}
+
+[data-theme="dark"] .toggle-switch::after,
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .toggle-switch::after { transform: translateX(1.15rem); }
+}
+
+[data-theme="dark"] .toggle-switch::after { transform: translateX(1.15rem); }
 
 /* ── LAYOUT ── */
 .page {
@@ -109,7 +201,7 @@ body {
   margin-bottom: 2.5rem;
 }
 
-/* the five cipher lines */
+/* ── CIPHER GRID ── */
 .cipher-grid {
   margin-top: 3rem;
   border-top: 1px solid var(--rule);
@@ -124,7 +216,7 @@ body {
   transition: background 0.15s;
 }
 
-.cipher-line:hover { background: rgba(0,0,0,0.03); }
+.cipher-line:hover { background: rgba(128,120,100,0.06); }
 
 .cl-noun {
   font-family: var(--display);
@@ -179,7 +271,11 @@ body {
 .sec-rule-label.o  { border-color: var(--safe);   color: var(--safe); }
 .sec-rule-label.a  { border-color: var(--ink3);   color: var(--ink3); }
 .sec-rule-label.x  { border-color: var(--danger); color: var(--danger); }
-.sec-rule-label.schema { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.sec-rule-label.schema {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
 
 .sec-rule hr {
   border: none;
@@ -267,7 +363,6 @@ body {
 
 /* ── ACCORDION ── */
 .accordion { margin: 1.5rem 0 2rem; }
-
 .acc-item { border-top: 1px solid var(--rule); }
 .acc-item:last-child { border-bottom: 1px solid var(--rule); }
 
@@ -294,14 +389,12 @@ body {
 .acc-head:hover { color: var(--ink); }
 .acc-head.open  { color: var(--danger); }
 
-/* ++ / -- toggle: pure CSS pseudoelements */
 .acc-toggle {
   flex-shrink: 0;
   position: relative;
   width: 1rem; height: 1rem;
   display: flex; align-items: center; justify-content: center;
 }
-
 .acc-toggle::before,
 .acc-toggle::after {
   content: '';
@@ -309,14 +402,9 @@ body {
   background: currentColor;
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
-.acc-toggle::before { width: 9px; height: 1.5px; }   /* horizontal */
-.acc-toggle::after  { width: 1.5px; height: 9px; }   /* vertical */
-
-/* open state: collapse vertical bar → minus sign */
-.acc-head.open .acc-toggle::after {
-  transform: rotate(90deg);
-  opacity: 0;
-}
+.acc-toggle::before { width: 9px; height: 1.5px; }
+.acc-toggle::after  { width: 1.5px; height: 9px; }
+.acc-head.open .acc-toggle::after { transform: rotate(90deg); opacity: 0; }
 
 .acc-body {
   max-height: 0;
@@ -332,20 +420,20 @@ body {
   line-height: 1.75;
   border-top: 1px dashed var(--rule2);
 }
-.acc-inner p  { margin-bottom: 0.85rem; }
+.acc-inner p  { margin-bottom: 0.85rem; color: var(--ink3); }
 .acc-inner p:last-child { margin-bottom: 0; }
 .acc-inner strong { color: var(--ink2); }
 .acc-inner em { font-style: italic; }
 .acc-inner ul { padding-left: 1.3rem; margin-bottom: 0.8rem; }
-.acc-inner li { margin-bottom: 0.35rem; }
+.acc-inner li { margin-bottom: 0.35rem; color: var(--ink3); }
 
 /* ── SCHEMA BLOCK ── */
 .schema-block {
   font-family: var(--mono);
   font-size: 0.7rem;
   line-height: 2.3;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--schema-bg);
+  color: var(--schema-text);
   padding: 1.8rem 2.2rem;
   margin-bottom: 2.5rem;
   letter-spacing: 0.04em;
@@ -384,7 +472,7 @@ body {
   transition: all 0.2s;
 }
 
-.stack-node.active { border-color: var(--ink); background: #fff; }
+.stack-node.active { border-color: var(--ink); background: rgba(128,120,100,0.07); }
 .stack-node.active::before { background: var(--ink); border-color: var(--ink); }
 
 .sn-head {
@@ -447,7 +535,7 @@ body {
   white-space: nowrap;
   letter-spacing: 0.06em;
 }
-.map-table tr:hover td { background: rgba(0,0,0,0.02); }
+.map-table tr:hover td { background: rgba(128,120,100,0.05); }
 .map-table tr:last-child td { border-bottom: 2px solid var(--ink); }
 
 /* ── CODA ── */
@@ -505,7 +593,7 @@ footer {
   font-family: var(--mono);
   font-size: 0.5rem;
   letter-spacing: 0.1em;
-  color: var(--rule);
+  color: var(--ink3);
   line-height: 2.4;
 }
 .foot-note a { color: var(--ink3); text-decoration: none; }
@@ -523,10 +611,18 @@ footer {
   .cl-key { justify-self: start; margin-top: 0.15rem; }
   .coda { padding: 2rem 1.4rem; }
   .sn-head { flex-wrap: wrap; }
+  .theme-toggle { top: 0.7rem; right: 0.9rem; }
 }
 </style>
 </head>
 <body>
+
+<!-- ── THEME TOGGLE ── -->
+<div class="theme-toggle" aria-label="Toggle dark/light mode">
+  <span id="toggle-label">Light</span>
+  <div class="toggle-switch" id="themeSwitch" role="button" tabindex="0" aria-pressed="false"></div>
+</div>
+
 <div class="page">
 
   <!-- ══ MASTHEAD ══ -->
@@ -951,6 +1047,7 @@ footer {
 </div><!-- /page -->
 
 <!-- CENTRALIZED ASSETS (Don't Update) -->
+<!-- BRANDING INFRASTRUCTURE -->
 <div class="scroll-indicator"><div class="scroll-progress"></div></div>
 <div class="bg-pattern"></div>
 <header class="header" id="header"></header>
@@ -959,8 +1056,8 @@ footer {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
 <script src="../js/shared.js"></script>
 
-<!-- DISTRIBUTED ASSETS -->
 <script>
+/* ── ACCORDION ── */
 function toggleAcc(btn) {
   const body = btn.nextElementSibling;
   const isOpen = btn.classList.contains('open');
@@ -968,20 +1065,39 @@ function toggleAcc(btn) {
   body.classList.toggle('open', !isOpen);
 }
 
+/* ── STACK NODES ── */
 function activateNode(el) {
   el.closest('.stack-track').querySelectorAll('.stack-node').forEach(n => n.classList.remove('active'));
   el.classList.add('active');
 }
 
+/* ── THEME TOGGLE ── */
+(function () {
+  const root = document.documentElement;
+  const btn  = document.getElementById('themeSwitch');
+  const lbl  = document.getElementById('toggle-label');
+
+  // Detect OS preference
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let dark = prefersDark;
+
+  function apply() {
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    btn.setAttribute('aria-pressed', dark);
+    lbl.textContent = dark ? 'Dark' : 'Light';
+  }
+
+  apply();
+
+  btn.addEventListener('click', () => { dark = !dark; apply(); });
+  btn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { dark = !dark; apply(); } });
+})();
+
+/* ── FADE IN OBSERVER ── */
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
 }, { threshold: 0.06 });
 document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-
-window.MathJax = {
-  tex: { inlineMath: [['$','$'],['\\(','\\)']] },
-  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
-};
 </script>
 </body>
 </html>

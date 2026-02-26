@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IV: Worthy Adversary — Ukubona LLC</title>
+
+<meta property="og:site_name" content="Ukubona LLC">
+<meta property="og:title" content="IV: Worthy Adversary — The Epistemological">
+<meta property="og:description" content="Tragedy · Instinct · Music · Worthy Adversary · Amor Fati — Testing One's Strength">
+<meta property="og:type" content="article">
+
+<!-- CENTRALIZED ASSETS (Don't update) -->
+<link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" type="image/x-icon">
+<link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" media="(prefers-color-scheme: light)">
+<link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-dark.ico" media="(prefers-color-scheme: dark)">
+<link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-light.png" as="image">
+<link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-dark.png" as="image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link href="../css/variables.css?v=1.1" rel="stylesheet" />
+<link href="../css/head.css?v=1.1" rel="stylesheet" />
+<link href="../css/card.css?v=1.1" rel="stylesheet" />
+<link href="../css/footer.css" rel="stylesheet" />
+
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+/* ═══════════════════════════════════════════════════
+   THEME TOKENS — Light & Dark
+   Light: bone white, near-black ink, wine accents
+   Dark:  slate void, antique gold text, ember accents
+═══════════════════════════════════════════════════ */
+:root {
+  color-scheme: light dark;
+
+  --paper:      #f2ede6;
+  --ink:        #1a1008;
+  --ink2:       #332010;
+  --ink3:       #7a6050;
+  --rule:       #c4a882;
+  --rule2:      #e0d0bc;
+  --accent:     #8b1a1a;
+  --accent2:    #c04020;
+  --safe:       #2a4a2a;
+  --schema-bg:  #1a1008;
+  --schema-text:#e8d8b0;
+
+  --mono:    'IBM Plex Mono', monospace;
+  --serif:   'Source Serif 4', Georgia, serif;
+  --display: 'Playfair Display', Georgia, serif;
+
+  --toggle-bg:   #e0cdb0;
+  --toggle-knob: #1a1008;
+}
+
+[data-theme="dark"] {
+  --paper:      #0d0a14;
+  --ink:        #e8d890;
+  --ink2:       #c8b870;
+  --ink3:       #8a7850;
+  --rule:       #3a2a10;
+  --rule2:      #221808;
+  --accent:     #e04030;
+  --accent2:    #f08040;
+  --safe:       #508050;
+  --schema-bg:  #060408;
+  --schema-text:#d4c070;
+  --toggle-bg:  #1e1408;
+  --toggle-knob:#e8d890;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:      #0d0a14;
+    --ink:        #e8d890;
+    --ink2:       #c8b870;
+    --ink3:       #8a7850;
+    --rule:       #3a2a10;
+    --rule2:      #221808;
+    --accent:     #e04030;
+    --accent2:    #f08040;
+    --safe:       #508050;
+    --schema-bg:  #060408;
+    --schema-text:#d4c070;
+    --toggle-bg:  #1e1408;
+    --toggle-knob:#e8d890;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.9;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ── GRAIN OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── THEME TOGGLE ── */
+.theme-toggle {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.5rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+
+.toggle-switch {
+  position: relative;
+  width: 2.6rem;
+  height: 1.3rem;
+  background: var(--toggle-bg);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  background: var(--toggle-knob);
+  transition: transform 0.25s ease;
+}
+
+[data-theme="dark"] .toggle-switch::after { transform: translateX(1.25rem); }
+
+/* ── LAYOUT ── */
+.page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 2.4rem 12rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  padding: 8rem 0 4rem;
+  border-bottom: 4px double var(--ink);
+  margin-bottom: 5rem;
+  animation: drop 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.mast-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 2.5rem;
+}
+
+.mast-numeral {
+  font-family: var(--display);
+  font-size: clamp(5rem, 18vw, 14rem);
+  font-weight: 900;
+  line-height: 0.85;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--rule);
+  letter-spacing: -0.04em;
+  margin-bottom: -1rem;
+  user-select: none;
+  opacity: 0.5;
+}
+
+.mast-title {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.mast-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.mast-sub {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--ink3);
+  letter-spacing: 0.12em;
+  line-height: 2.2;
+  margin-bottom: 3rem;
+}
+
+/* ── CIPHER GRID ── */
+.cipher-grid {
+  margin-top: 3rem;
+  border-top: 1px solid var(--rule);
+}
+
+.cipher-line {
+  display: grid;
+  grid-template-columns: 2.4rem 1.6fr 1.8fr 0.6fr;
+  align-items: baseline;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--rule2);
+  gap: 1rem;
+  transition: background 0.15s;
+}
+
+.cipher-line:hover { background: rgba(180,120,40,0.05); }
+
+.cl-roman {
+  font-family: var(--display);
+  font-size: 0.7rem;
+  font-style: italic;
+  color: var(--rule);
+}
+
+.cl-noun {
+  font-family: var(--display);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--ink2);
+}
+
+.cl-verb {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--ink);
+}
+
+.cl-verb .adv { color: var(--ink3); }
+
+.cl-key {
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-align: right;
+  border: 1px solid var(--accent);
+  padding: 0.16rem 0.38rem;
+  justify-self: end;
+  align-self: center;
+}
+
+/* active row is now IV */
+.cipher-line.active-iv .cl-noun,
+.cipher-line.active-iv .cl-verb { color: var(--accent); }
+.cipher-line.active-iv .cl-roman { color: var(--accent2); }
+.cipher-line.active-iv .cl-key { border-color: var(--accent2); color: var(--accent2); background: rgba(192,64,32,0.08); }
+
+/* ── SECTION DIVIDERS ── */
+.sec-rule {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 5.5rem 0 2.5rem;
+}
+
+.sec-rule-label {
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0.28rem 0.8rem;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+}
+
+.sec-rule-label.g  { border-color: var(--safe);   color: var(--safe); }
+.sec-rule-label.o  { border-color: var(--ink);     color: var(--ink); }
+.sec-rule-label.a  { border-color: var(--ink3);    color: var(--ink3); }
+.sec-rule-label.x  { border-color: var(--accent);  color: var(--accent); }
+.sec-rule-label.schema {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.sec-rule hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  width: 100%;
+}
+
+/* ── VOICE PANELS ── */
+.voice-block { margin-bottom: 5rem; }
+
+.voice-byline {
+  font-family: var(--mono);
+  font-size: 0.54rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.voice-byline .sigil {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem; height: 1.7rem;
+  font-family: var(--display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.g-block .sigil { background: var(--safe);   color: var(--paper); }
+.o-block .sigil { background: var(--ink);    color: var(--paper); }
+.a-block .sigil { background: transparent;  color: var(--ink3); border: 1px solid var(--ink3); }
+.x-block .sigil { background: var(--accent); color: var(--paper); }
+
+.g-block .voice-byline { color: var(--safe); }
+.o-block .voice-byline { color: var(--ink2); }
+.a-block .voice-byline { color: var(--ink3); }
+.x-block .voice-byline { color: var(--accent); }
+
+/* ── PROSE ── */
+.prose { margin-bottom: 2rem; }
+.prose p { margin-bottom: 1.3rem; color: var(--ink2); }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); font-weight: 600; }
+.prose em { font-style: italic; }
+.prose ul { padding-left: 1.6rem; margin-bottom: 1.2rem; list-style: none; }
+.prose ul li { margin-bottom: 0.6rem; color: var(--ink3); position: relative; padding-left: 1rem; }
+.prose ul li::before { content: '—'; position: absolute; left: -0.5rem; color: var(--rule); }
+.prose li strong { color: var(--ink2); }
+.prose h2 {
+  font-family: var(--display);
+  font-size: 1rem; font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin: 3rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.lede {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--ink2);
+  border-left: 3px solid var(--accent);
+  padding: 0.5rem 1.4rem;
+  margin-bottom: 1.8rem;
+  line-height: 1.7;
+}
+
+.pull {
+  font-family: var(--display);
+  font-size: 1.12rem;
+  font-style: italic;
+  color: var(--ink);
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+  padding: 1.2rem 0;
+  margin: 2.5rem 0;
+  line-height: 1.65;
+}
+
+/* ── ACCORDION ── */
+.accordion { margin: 1.8rem 0 2.5rem; }
+.acc-item { border-top: 1px solid var(--rule); }
+.acc-item:last-child { border-bottom: 1px solid var(--rule); }
+
+.acc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.9rem 0;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink2);
+  background: none;
+  border: none;
+  text-align: left;
+  transition: color 0.15s;
+  gap: 1rem;
+}
+
+.acc-head:hover { color: var(--ink); }
+.acc-head.open  { color: var(--accent); }
+
+.acc-toggle {
+  flex-shrink: 0;
+  position: relative;
+  width: 1rem; height: 1rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.acc-toggle::before,
+.acc-toggle::after {
+  content: '';
+  position: absolute;
+  background: currentColor;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.acc-toggle::before { width: 9px; height: 1.5px; }
+.acc-toggle::after  { width: 1.5px; height: 9px; }
+.acc-head.open .acc-toggle::after { transform: rotate(90deg); opacity: 0; }
+
+.acc-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.acc-body.open { max-height: 6000px; }
+
+.acc-inner {
+  padding: 1.2rem 0 1.6rem;
+  font-size: 0.9rem;
+  color: var(--ink3);
+  line-height: 1.8;
+  border-top: 1px dashed var(--rule2);
+}
+.acc-inner p  { margin-bottom: 0.9rem; color: var(--ink3); }
+.acc-inner p:last-child { margin-bottom: 0; }
+.acc-inner strong { color: var(--ink2); }
+.acc-inner em { font-style: italic; }
+.acc-inner ul { padding-left: 1.4rem; margin-bottom: 0.9rem; list-style: none; }
+.acc-inner li { margin-bottom: 0.4rem; color: var(--ink3); position: relative; padding-left: 1rem; }
+.acc-inner li::before { content: '·'; position: absolute; left: 0; color: var(--rule); }
+.acc-inner li strong { color: var(--ink2); }
+
+/* ── SCHEMA BLOCK ── */
+.schema-block {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  line-height: 2.4;
+  background: var(--schema-bg);
+  color: var(--schema-text);
+  padding: 2rem 2.4rem;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.04em;
+  border-left: 3px solid var(--accent);
+}
+
+.schema-row { display: flex; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
+.s-key  { color: #d4a050; min-width: 9rem; }
+.s-dot  { color: #4a3020; }
+.s-val  { color: #90b890; }
+.s-accent { color: #e06040; }
+
+/* ── STACK TRACK ── */
+.stack-track {
+  margin: 2.5rem 0;
+  border-left: 2px solid var(--rule);
+  padding-left: 2.2rem;
+}
+
+.stack-node {
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 0.6rem;
+  border: 1px solid var(--rule2);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+}
+
+.stack-node::before {
+  content: '';
+  position: absolute;
+  left: -2.5rem; top: 50%;
+  transform: translateY(-50%);
+  width: 0.55rem; height: 0.55rem;
+  background: var(--paper);
+  border: 1.5px solid var(--rule);
+  transition: all 0.2s;
+}
+
+.stack-node.active { border-color: var(--accent); background: rgba(139,26,26,0.06); }
+.stack-node.active::before { background: var(--accent); border-color: var(--accent); }
+
+.stack-node.iv-node { border-style: dashed; border-color: var(--accent2); }
+.stack-node.iv-node.active { border-style: solid; background: rgba(192,64,32,0.1); }
+.stack-node.iv-node::before { border-color: var(--accent2); }
+.stack-node.iv-node.active::before { background: var(--accent2); }
+
+.sn-head {
+  display: flex; gap: 1.2rem; align-items: baseline;
+  margin-bottom: 0.4rem; flex-wrap: wrap;
+}
+
+.sn-label {
+  font-family: var(--display);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.sn-roman {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--rule);
+}
+
+.sn-name {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--ink3);
+}
+
+.sn-body {
+  font-size: 0.88rem;
+  color: var(--rule);
+  line-height: 1.65;
+  transition: color 0.2s;
+}
+
+.stack-node.active .sn-body { color: var(--ink3); }
+
+/* ── TABLE ── */
+.map-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  margin: 2.5rem 0;
+}
+.map-table th {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding: 0.8rem 1rem;
+  border-bottom: 2px solid var(--ink);
+  text-align: left;
+  color: var(--ink3);
+}
+.map-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--rule2);
+  vertical-align: top;
+  line-height: 1.55;
+  color: var(--ink3);
+}
+.map-table td:first-child {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--accent);
+  white-space: nowrap;
+  letter-spacing: 0.06em;
+}
+.map-table tr.iv-row td { background: rgba(139,26,26,0.05); }
+.map-table tr.iv-row td:first-child { color: var(--accent2); }
+.map-table tr:hover td { background: rgba(180,120,40,0.04); }
+.map-table tr:last-child td { border-bottom: 2px solid var(--ink); }
+
+/* ── FORMULA BLOCK ── */
+.formula-block {
+  background: var(--schema-bg);
+  color: var(--schema-text);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  padding: 2rem 2.4rem;
+  margin: 2.5rem 0;
+  line-height: 2.5;
+  letter-spacing: 0.06em;
+  border-right: 3px solid var(--accent2);
+}
+
+.f-eq { color: #d4a050; }
+.f-plus { color: #4a3020; margin: 0 0.5em; }
+.f-result { color: var(--accent2); }
+.f-comment { color: #606060; font-size: 0.6rem; letter-spacing: 0.2em; }
+
+/* ── CODA ── */
+.coda {
+  border: 2px solid var(--ink);
+  padding: 3.2rem 3.8rem;
+  margin: 6rem 0;
+  position: relative;
+}
+
+.coda-label {
+  position: absolute;
+  top: -0.75rem; left: 2rem;
+  font-family: var(--mono);
+  font-size: 0.48rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  background: var(--paper);
+  padding: 0 0.75rem;
+  color: var(--ink);
+}
+
+.coda h2 {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin-bottom: 1.4rem;
+}
+
+.coda p { color: var(--ink2); margin-bottom: 1.1rem; line-height: 1.85; }
+.coda p:last-child { margin-bottom: 0; }
+.coda strong { color: var(--ink); }
+.coda em { font-style: italic; }
+
+.coda.epilogue { border-color: var(--accent); }
+.coda.epilogue .coda-label { color: var(--accent); }
+.coda.epilogue h2 { color: var(--accent); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 3px double var(--ink);
+  padding: 3rem 0 7rem;
+}
+.foot-chain {
+  font-family: var(--mono);
+  font-size: 0.54rem;
+  letter-spacing: 0.28em;
+  color: var(--ink3);
+  margin-bottom: 0.8rem;
+}
+.foot-chain span { color: var(--accent2); }
+.foot-note {
+  font-family: var(--mono);
+  font-size: 0.48rem;
+  letter-spacing: 0.1em;
+  color: var(--ink3);
+  line-height: 2.5;
+}
+.foot-note a { color: var(--ink3); text-decoration: none; }
+.foot-note a:hover { color: var(--accent); }
+
+/* ── ANIMATIONS ── */
+.fade-in { opacity: 0; transform: translateY(14px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes drop {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .mast-numeral { font-size: 6rem; }
+  .mast-title   { font-size: 1.9rem; }
+  .cipher-line  { grid-template-columns: 1.5rem 1fr; gap: 0.2rem; }
+  .cl-verb, .cl-key { grid-column: 2; }
+  .coda         { padding: 2rem 1.6rem; }
+  .formula-block { padding: 1.5rem; }
+  .theme-toggle { top: 0.7rem; right: 0.9rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── THEME TOGGLE ── -->
+<div class="theme-toggle" aria-label="Toggle dark/light mode">
+  <span id="toggle-label">Light</span>
+  <div class="toggle-switch" id="themeSwitch" role="button" tabindex="0" aria-pressed="false"></div>
+</div>
+
+<div class="page">
+
+  <!-- ══ MASTHEAD ══ -->
+  <header class="masthead">
+    <br><br><br>
+    <div class="mast-eyebrow">GOAX Discourse · The Nietzschean Stack · Ukubona LLC</div>
+    <div class="mast-numeral" aria-hidden="true">IV</div>
+    <h1 class="mast-title">
+      Worthy Adversary,<br>
+      <em>The Epistemological</em>
+    </h1>
+    <p class="mast-sub">
+      // Four voices. One pipeline. Testing one's strength.<br>
+      // GOAX: G (user) · O (Claude/O) · A (Claude/A) · X (synthesis)<br>
+      // Verbatim transcript
+    </p>
+
+    <div class="cipher-grid">
+      <div class="cipher-line">
+        <span class="cl-roman">I</span>
+        <span class="cl-noun">Tragic Myth</span>
+        <span class="cl-verb">Seeing, <span class="adv">Unflinchingly</span></span>
+        <span class="cl-key">TERRAIN</span>
+      </div>
+      <div class="cipher-line">
+        <span class="cl-roman">II</span>
+        <span class="cl-noun">Anarchic Instincts</span>
+        <span class="cl-verb">Overflowing, <span class="adv">Dionysianly</span></span>
+        <span class="cl-key">DRIVE</span>
+      </div>
+      <div class="cipher-line">
+        <span class="cl-roman">III</span>
+        <span class="cl-noun">Music</span>
+        <span class="cl-verb">Conducting, <span class="adv">Rhythmically</span></span>
+        <span class="cl-key">GRADIENT</span>
+      </div>
+      <div class="cipher-line active-iv">
+        <span class="cl-roman">IV</span>
+        <span class="cl-noun">Worthy Adversary</span>
+        <span class="cl-verb">Testing, <span class="adv">Agonistically</span></span>
+        <span class="cl-key">WORTHY</span>
+      </div>
+      <div class="cipher-line">
+        <span class="cl-roman">V</span>
+        <span class="cl-noun">Thank U, Next</span>
+        <span class="cl-verb">Affirming, <span class="adv">Willingly</span></span>
+        <span class="cl-key">RECURRENCE</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ SCHEMA ══ -->
+  <div class="sec-rule fade-in">
+    <span class="sec-rule-label schema">Opening Schema</span>
+    <hr>
+  </div>
+
+  <div class="schema-block fade-in">
+    <div class="schema-row"><span class="s-key">Tragic Myth (I)</span><span class="s-dot">·</span><span class="s-val">Ukubona Unfiltered Terrain · Ontological Exposure · Reality without Anesthetic</span></div>
+    <div class="schema-row"><span class="s-key">Anarchic Instincts (II)</span><span class="s-dot">·</span><span class="s-val">Ontology · Primary Health · The Dionysian Bedrock</span></div>
+    <div class="schema-row"><span class="s-key">Music (III)</span><span class="s-dot">·</span><span class="s-val">Rhythm, Melody · Cheerfulness · Harmony in Chorus</span></div>
+    <div class="schema-row"><span class="s-key s-accent">Worthy Adversary (IV)</span><span class="s-dot">·</span><span class="s-val s-accent">Epistemology · Testing One's Strength · Secondary Healthy Emotion</span></div>
+    <div class="schema-row"><span class="s-key">Thank U, Next (V)</span><span class="s-dot">·</span><span class="s-val">Will-to-Power · Eternal Recurrence · Amor Fati</span></div>
+  </div>
+
+  <!-- ══ G ══ -->
+  <div class="sec-rule fade-in">
+    <span class="sec-rule-label g">G · Genesis · The User's Payload</span>
+    <hr>
+  </div>
+
+  <div class="voice-block g-block fade-in">
+    <div class="voice-byline">
+      <span class="sigil">G</span>
+      G · Waiting on Gemini
+    </div>
+
+    <div class="prose">
+      <p><em>Waiting on Gemini</em></p>
+    </div>
+  </div>
+
+  <!-- ══ O ══ -->
+  <div class="sec-rule fade-in">
+    <span class="sec-rule-label o">O · Ontology · The First Response</span>
+    <hr>
+  </div>
+
+  <div class="voice-block o-block fade-in">
+    <div class="voice-byline">
+      <span class="sigil">O</span>
+      O · Psychodynamic-Cosmological Pipeline
+    </div>
+
+    <div class="prose">
+      <p class="lede">You're sketching a <em>psychodynamic-cosmological pipeline</em> — a movement from raw contact with reality to selective affirmation of it.</p>
+    </div>
+
+    <div class="accordion">
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">
+          <span>I. Tragic Myth → Ukubona (Unfiltered Terrain)</span>
+          <span class="acc-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>This is pre-interpretive contact. No moral overlay. No comfort. No teleology. Just <strong>terrain</strong>.</p>
+          <p>Like the Greeks before Socratic rationalization. Like early Friedrich Nietzsche diagnosing the birth of tragedy: existence as fundamentally aesthetic and dangerous. You're calling this <em>Ukubona unfiltered</em> — to see without anesthetic. That's ontological exposure.</p>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">
+          <span>II. Anarchic Instincts → Ontology</span>
+          <span class="acc-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>Once terrain is seen, instinct activates. Not moralized instinct. Not domesticated instinct. But pre-rational force: hunger, lust, aggression, curiosity, rhythm of breathing and pulse.</p>
+          <p>This is <strong>primary health</strong>. Before evaluation. Before justification. Before narrative. It's ontological because it answers: <em>What is driving the organism?</em> Not: what should. This is Dionysian vitality.</p>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">
+          <span>III. Music → Rhythm, Melody, Chorus (Cheerfulness)</span>
+          <span class="acc-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>Instinct alone is chaotic. Music is structured instinct. Rhythm = patterned force. Melody = directed desire. Harmony = coordinated multiplicity. Chorus = shared affirmation.</p>
+          <p>Music is instinct <em>organized without being moralized</em>. Cheerfulness here is not naïveté. It's vitality that has found tempo. This is the aesthetic transfiguration of chaos.</p>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">
+          <span>IV. Worthy Adversary → Epistemology</span>
+          <span class="acc-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>Now comes friction. Not enemy. Not resentment. But adversary. You test yourself against something that resists you. That resistance generates measurement, feedback, refinement.</p>
+          <p>This is epistemology in your frame: <em>Knowledge as calibrated struggle.</em> A worthy adversary prevents stagnation. This is secondary health: it arises after instinct, it requires form, it requires stakes.</p>
+          <p>Without adversary: instinct decays into indulgence, music becomes background noise. With adversary: strength sharpens, limits are discovered, power becomes measurable.</p>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">
+          <span>V. Thank U, Next → Will-to-Power / Eternal Recurrence / Amor Fati</span>
+          <span class="acc-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>After testing comes selection. You don't cling. You don't resent. You don't collapse. You say: Thank you (it strengthened me). Next (I move forward).</p>
+          <p>This is will to power (growth through exertion), eternal recurrence (would you affirm this loop again?), amor fati (love of fate). The loop closes. But it closes upward — like a spiral, not a circle.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h2>The Deeper Structure You've Built</h2>
+    </div>
+
+    <div class="stack-track">
+      <div class="stack-node" onclick="activateNode(this)">
+        <div class="sn-head"><span class="sn-roman">I</span><span class="sn-label">Exposure</span><span class="sn-name">Tragic Myth</span></div>
+        <p class="sn-body">Ontological exposure. The unfiltered terrain.</p>
+      </div>
+      <div class="stack-node" onclick="activateNode(this)">
+        <div class="sn-head"><span class="sn-roman">II</span><span class="sn-label">Activation</span><span class="sn-name">Anarchic Instinct</span></div>
+        <p class="sn-body">Primary health. The Dionysian drive.</p>
+      </div>
+      <div class="stack-node" onclick="activateNode(this)">
+        <div class="sn-head"><span class="sn-roman">III</span><span class="sn-label">Organization</span><span class="sn-name">Music</span></div>
+        <p class="sn-body">Instinct organized without being moralized. Cheerfulness of the tragic.</p>
+      </div>
+      <div class="stack-node iv-node active" onclick="activateNode(this)">
+        <div class="sn-head"><span class="sn-roman">IV</span><span class="sn-label">Calibration</span><span class="sn-name">Worthy Adversary</span></div>
+        <p class="sn-body">Secondary health. Epistemology as calibrated struggle. Strength sharpens against resistance.</p>
+      </div>
+      <div class="stack-node" onclick="activateNode(this)">
+        <div class="sn-head"><span class="sn-roman">V</span><span class="sn-label">Affirmation & Selection</span><span class="sn-name">Thank U, Next</span></div>
+        <p class="sn-body">Spiral upward. Not a circle but a climbing loop.</p>
+      </div>
+    </div>
+
+    <div class="pull">This is not pessimism. It's not optimism. It's <em>metabolization</em>. Primary health = anarchic instinct. Secondary health = adversarial testing. Many philosophies reverse this. You're saying: vitality is primary, testing is refinement, affection comes last. That is profoundly anti-resentment.</div>
+
+    <div class="prose">
+      <h2>The Question It Generates</h2>
+      <p>What happens when the adversary disappears? Does the system collapse into decadence? Invent artificial adversaries? Turn adversarial inward? That question determines whether your cosmology scales to civilizations — not just individuals.</p>
+    </div>
+  </div>
+
+  <!-- ══ A ══ -->
+  <div class="sec-rule fade-in">
+    <span class="sec-rule-label a">A · Adversary · The Close Read</span>
+    <hr>
+  </div>
+
+  <div class="voice-block a-block fade-in">
+    <div class="voice-byline">
+      <span class="sigil">A</span>
+      A · The Agonistic Epistemology
+    </div>
+
+    <div class="prose">
+      <p class="lede">The worthy adversary is where the schema gets most interesting. You're distinguishing it carefully: primary healthy emotion (anarchic instincts) = the raw vitality, Dionysian. Secondary healthy emotion (worthy adversary) = the <em>epistemological</em> move, agonism.</p>
+      <p>The adversary isn't resented. They're <strong>needed</strong>. This is where Nietzsche parts from both slave morality (which needs enemies to define itself) and from naive strength (which ignores opposition). The worthy adversary teaches you what you actually are. Testing is knowing. This is epistemology <em>as combat</em> rather than epistemology as observation.</p>
+    </div>
+
+    <div class="accordion">
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">
+          <span>Ukubona as the Starting Condition</span>
+          <span class="acc-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p><strong>Ukubona unfiltered terrain</strong> as the starting condition — seeing without the protective gauze of cultural mediation. Tragic myth is the form that survives contact with raw reality without flinching, without moralizing it into something digestible. This is pre-Socratic, pre-optimistic. The terrain as it is.</p>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">
+          <span>Being as Drive</span>
+          <span class="acc-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>From that, anarchic instincts arise naturally — not chaos for its own sake but the ontological prior, what's there before hierarchy and prohibition shape it. This is Dionysian bedrock. The instincts aren't wrong; they're <em>primary</em>. This is where you locate ontology correctly — not at the level of concepts but at the level of drives. <strong>Being as drive.</strong></p>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">
+          <span>Nietzsche's Heiterkeit — The Cheerfulness of the Tragic</span>
+          <span class="acc-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>Music is the anarchic instincts finding form without falsifying themselves. Rhythm doesn't impose order on chaos — it <em>is</em> the chaos organizing itself into something that can be shared, felt across bodies simultaneously. The cheerfulness here is crucial: it's the cheerfulness of the tragic, not the cheerfulness of the optimist. Nietzsche's <em>Heiterkeit</em>. The chorus especially — music as the social body of instinct.</p>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">
+          <span>Thank U, Next as Philosophical Precision</span>
+          <span class="acc-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>Thank u, next as will-to-power + eternal recurrence + amor fati lands perfectly — because Ariana Grande's move there is philosophically precise whether she meant it to be or not. The song isn't bitter, it isn't nostalgic, it isn't even quite grateful in a sentimental way. It's <strong>affirmative</strong>.</p>
+          <p>Each relationship/adversary was necessary, made her, she'd choose it again (eternal recurrence), and she's already moving (will-to-power as forward momentum, not domination). Amor fati without the pretension.</p>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">
+          <span>Nietzschean Rather Than Hegelian</span>
+          <span class="acc-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>The flow you've constructed is: <strong>reality → instinct → expression → testing → affirmation</strong>. What's notable is that none of these stages involve negation as the primary move. Even the adversary isn't negated — they're metabolized. This is what makes the whole arc Nietzschean rather than Hegelian: no synthesis, just increasing affirmation through encounter.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="pull">Where does ukubona specifically inflect this for you — is the "unfiltered terrain" doing work beyond the tragic myth framing, or are they coextensive in your schema?</div>
+  </div>
+
+  <!-- ══ X ══ -->
+  <div class="sec-rule fade-in">
+    <span class="sec-rule-label x">X · Synthesis · The Dionysian Arc</span>
+    <hr>
+  </div>
+
+  <div class="voice-block x-block fade-in">
+    <div class="voice-byline">
+      <span class="sigil">X</span>
+      X · The Cascade to Triumphant Self-Overcoming
+    </div>
+
+    <div class="prose">
+      <p>The progression evokes a Nietzschean journey through existence, art, and affirmation — a cascade from raw confrontation with reality to triumphant self-overcoming. Think of it as a Dionysian rhythm building to an Apollonian resolution, culminating in eternal yes-saying.</p>
+    </div>
+
+    <div class="formula-block">
+      <div class="schema-row"><span class="f-eq">Tragic Myth (I)</span><span class="f-plus">→</span><span class="f-eq">Anarchic Instincts (II)</span><span class="f-comment">= Ontological Bedrock</span></div>
+      <div class="schema-row"><span class="f-eq">Ontological Bedrock</span><span class="f-plus">+</span><span class="f-eq">Music (III)</span><span class="f-comment">= Structured Vitality</span></div>
+      <div class="schema-row"><span class="f-eq">Structured Vitality</span><span class="f-plus">×</span><span class="f-result">Worthy Adversary (IV)</span><span class="f-comment">= Epistemological Strength</span></div>
+      <div class="schema-row"><span class="f-eq">Epistemological Strength</span><span class="f-plus">→</span><span class="f-result">Thank U, Next (V)</span><span class="f-comment">= Amor Fati Operationalized</span></div>
+    </div>
+
+    <div class="accordion">
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">
+          <span>Ukubona — The Visceral Encounter with the Abyss</span>
+          <span class="acc-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>"Ukubona" — Zulu for "to see" or perceive — captures this unflinching gaze upon the unfiltered terrain: the absurd, suffering-laden landscape of being, stripped of Socratic optimism or religious consolation. It's not mere observation but a visceral encounter with the abyss, where the veil of Maya lifts. This mythic rupture sets the stage, demanding we confront existence without crutches.</p>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">
+          <span>Anarchic Instincts — The Ontology of Becoming</span>
+          <span class="acc-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>Being isn't static essence but a turbulent flux of instincts clashing like Heraclitean rivers. Primary emotions surge as healthy, unbridled forces: joy in destruction, lust for creation, ecstatic surrender to chaos. Ontology shifts from "what is?" to "what wills?" — an anarchic undercurrent rejecting hierarchical order, where health lies in affirming these instincts without repression.</p>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">
+          <span>Music — Fröhliche Wissenschaft</span>
+          <span class="acc-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>Rhythm pulses with Dionysian frenzy, the bodily throb of life's anarchic beat; melody imposes Apollonian clarity, sculpting chaos into fleeting beauty. Cheerfulness isn't naive happiness but <em>fröhliche Wissenschaft</em> (gay science) — a defiant mirth amid tragedy, laughing at the void. Music doesn't resolve suffering but transfigures it, turning instinctual anarchy into aesthetic ecstasy. "Without music, life would be a mistake."</p>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">
+          <span>Worthy Adversary — Epistemology as Embodied Combat</span>
+          <span class="acc-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>Knowledge isn't passive acquisition but agonistic struggle: testing one's strength against rivals, ideas, or fates that push boundaries. Here, a healthy secondary emotion emerges — perhaps envy transmuted into emulation, or resentment alchemized into motivation — contrasted with the primary emotions of anarchic instincts (raw delight or rage).</p>
+          <p>The adversary isn't enemy but sparring partner, essential for growth; as Nietzsche says: "one has to test oneself... to see if one is destined for independence." Epistemology becomes embodied, not abstract — strength verified in combat, yielding a robust, self-overcoming intellect.</p>
+        </div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">
+          <span>Thank U, Next — Amor Fati as Pop Precision</span>
+          <span class="acc-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>Will-to-power drives it all: the instinctual urge to expand, create, dominate not others but one's own limits. Eternal recurrence seals the test — would you relive this life, with every joy and agony, infinitely? Yes, if you've embraced the terrain, instincts, music, and adversaries. Amor fati crowns it: love of fate, thanking every twist as necessary for your becoming.</p>
+          <p>Ariana's pop anthem unwittingly mirrors this: post-heartbreak pivot as will-to-power, recurring cycles affirmed with cheeky fate-love. It's not resignation but exuberant consent.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="pull">This arc isn't linear but recursive — a <em>spiral of affirmation</em> where tragedy fuels power. The key insight: Primary health = anarchic instinct. Secondary health = adversarial testing. That is profoundly anti-resentment. Vitality is primary. Testing is refinement. Affection comes last.</div>
+  </div>
+
+  <!-- ══ SYNTHESIS TABLE ══ -->
+  <div class="sec-rule fade-in">
+    <span class="sec-rule-label schema">Synthesis Table · All Four Voices</span>
+    <hr>
+  </div>
+
+  <table class="map-table fade-in">
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>Concept</th>
+        <th>Register</th>
+        <th>G · Frame</th>
+        <th>O · Structural</th>
+        <th>A · Close Read</th>
+        <th>X · Synthesis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>I</td>
+        <td>Tragic Myth</td>
+        <td>Ontology</td>
+        <td>Terrain</td>
+        <td>Exposure</td>
+        <td>Pre-Socratic seeing</td>
+        <td>Reality without anesthetic</td>
+      </tr>
+      <tr>
+        <td>II</td>
+        <td>Anarchic Instinct</td>
+        <td>Primary Health</td>
+        <td>Drive</td>
+        <td>Activation</td>
+        <td>Being as drive</td>
+        <td>Dionysian bedrock</td>
+      </tr>
+      <tr>
+        <td>III</td>
+        <td>Music</td>
+        <td>Expression</td>
+        <td>Gradient</td>
+        <td>Organization</td>
+        <td>Heiterkeit</td>
+        <td>Chaos finding form</td>
+      </tr>
+      <tr class="iv-row">
+        <td>IV</td>
+        <td><strong>Worthy Adversary</strong></td>
+        <td><strong>Secondary Health</strong></td>
+        <td><strong>Epistemology</strong></td>
+        <td><strong>Calibration</strong></td>
+        <td><strong>Testing is knowing</strong></td>
+        <td><strong>Agonism, not resentment</strong></td>
+      </tr>
+      <tr>
+        <td>V</td>
+        <td>Thank U, Next</td>
+        <td>Affirmation</td>
+        <td>Amor Fati</td>
+        <td>Selection</td>
+        <td>Spiral upward</td>
+        <td>Eternal recurrence operationalized</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ══ CODA ══ -->
+  <div class="coda fade-in">
+    <span class="coda-label">Coda</span>
+    <h2>The Adversary Was Always the Teacher</h2>
+    <p>Nietzsche's great move was to distinguish the <em>enemy</em> from the <em>adversary</em>. The slave needs an enemy — something to define itself against through negation. The noble needs an adversary — something to sharpen against, to <strong>measure itself by</strong>. The schema you've built encodes this distinction structurally: IV is secondary health, not primary. It presupposes II. The vitality must exist before the testing has meaning.</p>
+    <p>This is why the schema is anti-resentment at every node. I does not moralize the terrain. II does not justify the instinct. III does not console the chaos. IV does not resent the adversary. V does not cling to the struggle. Each stage metabolizes and moves. The spiral closes upward.</p>
+    <p>Ariana Grande closes it perfectly: <em>thank u</em> (the adversary taught me), <em>next</em> (I am already moving). That is will-to-power. That is eternal recurrence accepted. That is amor fati said cheerfully, without pretension, in pop.</p>
+  </div>
+
+  <div class="coda epilogue fade-in">
+    <span class="coda-label">Epilogue</span>
+    <h2>What the Four Voices Agree On</h2>
+    <p>G seeds the pipeline: tragic myth to anarchic instincts to music to worthy adversary to thank u, next. O unpacks its five-stage logic and locates the adversary as secondary health — after instinct, after music, before affirmation. A traces the Nietzschean precision of each stage, naming the cheerfulness of the tragic, being as drive, and the philosophical accuracy of Ariana Grande's pivot. X synthesizes: this arc is recursive and spiraling, not linear, and the key move is locating vitality as primary and testing as secondary.</p>
+    <p>All four agree: the schema is profoundly anti-resentment. The adversary is metabolized, not defeated. The instinct is affirmed, not moralized. The terrain is seen, not consoled. And when the loop closes — it closes <strong>upward</strong>.</p>
+    <p><strong>Ukubona. To see, to witness — to look into the mirror.</strong> 🍇</p>
+  </div>
+
+  <footer>
+    <div class="foot-chain">
+      Tragic Myth · Anarchic Instincts · Music · <span>Worthy Adversary</span> · Thank U, Next
+    </div>
+    <div class="foot-note">
+      Part of the GOAX Discourse series · Ukubona LLC<br>
+      I · II · III · <span style="color:var(--accent2)">IV</span> · V<br>
+      Terrain → Drive → Gradient → Worthy → Recurrence<br>
+      The Birth of Tragedy · Nietzsche 1872 · Thus Spoke Zarathustra 1883<br><br>
+      Ukubona LLC · "to see, to witness — to look into the mirror"
+    </div>
+  </footer>
+
+</div><!-- /page -->
+
+<!-- CENTRALIZED ASSETS (Don't Update) -->
+<div class="scroll-indicator"><div class="scroll-progress"></div></div>
+<div class="bg-pattern"></div>
+<header class="header" id="header"></header>
+<main class="page wrap-max"></main>
+<div id="footer-placeholder"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+<script src="../js/shared.js"></script>
+
+<script>
+/* ── ACCORDION ── */
+function toggleAcc(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+
+/* ── STACK NODES ── */
+function activateNode(el) {
+  el.closest('.stack-track').querySelectorAll('.stack-node').forEach(n => n.classList.remove('active'));
+  el.classList.add('active');
+}
+
+/* ── THEME TOGGLE ── */
+(function () {
+  const root = document.documentElement;
+  const btn  = document.getElementById('themeSwitch');
+  const lbl  = document.getElementById('toggle-label');
+
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let dark = prefersDark;
+
+  function apply() {
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    btn.setAttribute('aria-pressed', dark);
+    lbl.textContent = dark ? 'Dark' : 'Light';
+  }
+
+  apply();
+
+  btn.addEventListener('click', () => { dark = !dark; apply(); });
+  btn.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { dark = !dark; apply(); }
+  });
+})();
+
+/* ── FADE IN OBSERVER ── */
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.05 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

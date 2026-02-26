@@ -1,5 +1,0 @@
-- ?
-- Pessimism: Seeing, Blindly
-- Cheerfulness: Foraging, Stochastically
-- Hellenism : Rehearsing, Consequentially
-- ?

@@ -419,6 +419,19 @@ section { width: 100%; padding: 0 2rem; }
 [data-theme="dark"] .ai-block.A .ai-body { color: #d8c8f0; }
 [data-theme="dark"] .ai-block.X .ai-body { color: #f0d8c8; }
 
+/* Dark mode — masthead text must stay light regardless of --parchment token */
+[data-theme="dark"] .masthead h1           { color: #f0e6c8; }
+[data-theme="dark"] .masthead-sub          { color: rgba(240,230,200,0.7); }
+[data-theme="dark"] .masthead-epigraph     { color: var(--gold-light); }
+[data-theme="dark"] .masthead-kicker       { color: var(--gold); }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .masthead h1       { color: #f0e6c8; }
+  :root:not([data-theme="light"]) .masthead-sub      { color: rgba(240,230,200,0.7); }
+  :root:not([data-theme="light"]) .masthead-epigraph { color: var(--gold-light); }
+  :root:not([data-theme="light"]) .masthead-kicker   { color: var(--gold); }
+}
+
 /* ── PROMPT BLOCKS ── */
 .prompt-block {
   margin: 2.5rem 0;

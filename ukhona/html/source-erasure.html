@@ -3,10 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ata Maite Okubona, Ta Maite Okubala — A Colloquium</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Ata Maite Okubona, Ta Maite Okubala — Ukubona LLC</title>
+
+<meta property="og:site_name" content="Ukubona LLC">
+<meta property="og:title" content="Ata Maite Okubona, Ta Maite Okubala — A Colloquium">
+<meta property="og:description" content="Lusoga · Bradford Hill · Harold Bloom · Beyoncé · The Tritone Assassination — Four AI models, one argument">
+<meta property="og:type" content="article">
+
+<!-- ═══════════════════════════════════════════════════
+     CENTRALIZED ASSETS — Do Not Modify
+     Hosted at abikesa.github.io
+═══════════════════════════════════════════════════ -->
+<link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" type="image/x-icon">
+<link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" media="(prefers-color-scheme: light)">
+<link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-dark.ico" media="(prefers-color-scheme: dark)">
+<link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-light.png" as="image">
+<link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-dark.png" as="image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=JetBrains+Mono:wght@300;400;500&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+
+<link href="../css/variables.css?v=1.1" rel="stylesheet" />
+<link href="../css/head.css?v=1.1" rel="stylesheet" />
+<link href="../css/card.css?v=1.1" rel="stylesheet" />
+<link href="../css/footer.css" rel="stylesheet" />
+
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
   :root {
     --parchment: #f2ead8;
@@ -497,7 +520,36 @@
   <a href="#part-responses">VII · MODEL RESPONSES</a>
 </nav>
 
+<!-- ═══════════════════════════════════════════════════
+     THEME TOGGLE — page-local, wired to data-theme
+═══════════════════════════════════════════════════ -->
+<div id="themeToggle" aria-label="Toggle dark/light mode" style="position:fixed;top:1.1rem;right:1.5rem;z-index:999;display:flex;align-items:center;gap:0.5rem;font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);cursor:pointer;">
+  <span id="toggle-label">Light</span>
+  <div id="themeSwitch" style="position:relative;width:2.4rem;height:1.2rem;background:rgba(74,55,40,0.15);border:1px solid var(--gold);cursor:pointer;flex-shrink:0;">
+    <div id="themeKnob" style="position:absolute;top:0.18rem;left:0.18rem;width:0.7rem;height:0.7rem;background:var(--sepia);transition:transform 0.25s ease;"></div>
+  </div>
+</div>
+
 <div class="main-wrap">
+
+  <!-- ═══════════════════════════════════════════════════
+       UKUBONA BRAND BAR — Distributed / page-local HTML
+       Uses centralized preloaded logos from abikesa.github.io
+  ═══════════════════════════════════════════════════ -->
+  <div id="brand-bar" style="display:flex;align-items:center;justify-content:space-between;padding:1.6rem 0 1.2rem;border-bottom:1px solid var(--border);margin-bottom:0;">
+    <a href="/" style="display:flex;align-items:baseline;gap:0.5rem;text-decoration:none;" aria-label="Ukubona LLC">
+      <img id="logo-light" src="https://abikesa.github.io/logos/assets/ukubona-light.png" alt="Ukubona LLC" style="height:1.3rem;width:auto;" onerror="this.style.display='none'">
+      <img id="logo-dark"  src="https://abikesa.github.io/logos/assets/ukubona-dark.png"  alt="Ukubona LLC" style="height:1.3rem;width:auto;display:none;" onerror="this.style.display='none'">
+      <span style="font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);line-height:1;" aria-hidden="true">Ukubona</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.45rem;letter-spacing:0.38em;text-transform:uppercase;color:var(--muted);" aria-hidden="true">LLC</span>
+    </a>
+    <nav style="display:flex;gap:1.6rem;" aria-label="Colloquium sections">
+      <a href="#part-lusoga"   style="font-family:'JetBrains Mono',monospace;font-size:0.48rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);text-decoration:none;">I · Lusoga</a>
+      <a href="#part-calculus" style="font-family:'JetBrains Mono',monospace;font-size:0.48rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);text-decoration:none;">III · Calculus</a>
+      <a href="#part-rnb"      style="font-family:'JetBrains Mono',monospace;font-size:0.48rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);text-decoration:none;">V · R&amp;B</a>
+      <a href="#part-tritone"  style="font-family:'JetBrains Mono',monospace;font-size:0.48rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:0.1rem;">VI · Tritone</a>
+    </nav>
+  </div>
 
 <!-- ═══════════════════════════════════════════════════ -->
 <!-- PART I — LUSOGA TRANSLATION -->
@@ -1302,14 +1354,53 @@
 
 <div class="ornament">· · ·</div>
 
-<div style="text-align:center; padding: 2rem 0 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase;">
-  Ata Maite Okubona, Ta Maite Okubala · Lusoga / Lukono · Early 2026 · A Colloquium
-</div>
+  <!-- ═══════════════════════════════════════════════════
+       UKUBONA BRAND FOOTER — Distributed / page-local
+       Does not conflict with centralized footer.css
+       (.footer class untouched). Uses preloaded logos.
+  ═══════════════════════════════════════════════════ -->
+  <div style="margin-top:4rem;padding:2.5rem 0 1.5rem;border-top:3px double var(--deep-ink);display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;">
+    <div>
+      <div style="font-family:'Cinzel',serif;font-size:1rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">Ukubona LLC</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.45rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;font-style:italic;">to see, to witness — to look into the mirror</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.22em;color:var(--muted);line-height:2.4;">
+        Ata Maite Okubona, Ta Maite Okubala · Lusoga / Lukono · Early 2026<br>
+        GOAX Colloquium · G (Gemini) · O (OpenAI) · A (Anthropic) · X (xAI)<br>
+        Bradford Hill · Harold Bloom · Nietzsche · Mya → Keri Hilson → Beyoncé<br>
+        <a href="/" style="color:var(--muted);text-decoration:none;">ukubona.llc</a> · © 2026
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="margin-bottom:0.8rem;">
+        <img id="footer-logo-light" src="https://abikesa.github.io/logos/assets/ukubona-light.png" alt="Ukubona LLC" style="height:1.8rem;width:auto;" onerror="this.style.display='none'">
+        <img id="footer-logo-dark"  src="https://abikesa.github.io/logos/assets/ukubona-dark.png"  alt="Ukubona LLC" style="height:1.8rem;width:auto;display:none;" onerror="this.style.display='none'">
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.44rem;letter-spacing:0.28em;color:var(--muted);line-height:2.2;">
+        GOAX Discourse<br>
+        <span style="color:var(--gold);">Colloquium I</span>
+      </div>
+    </div>
+  </div>
 
 </div><!-- /main-wrap -->
 
+<!-- ═══════════════════════════════════════════════════
+     CENTRALIZED BOTTOM SCAFFOLDING — Do Not Modify
+═══════════════════════════════════════════════════ -->
+<div class="scroll-indicator"><div class="scroll-progress"></div></div>
+<div class="bg-pattern"></div>
+<header class="header" id="header"></header>
+<main class="page wrap-max"></main>
+<div id="footer-placeholder"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+<script src="../js/shared.js"></script>
+
+<!-- ═══════════════════════════════════════════════════
+     DISTRIBUTED / PAGE-LOCAL SCRIPTS
+     Anchor nav, theme toggle, logo swap
+═══════════════════════════════════════════════════ -->
 <script>
-  // Smooth highlight on anchor nav
+  // ── Smooth anchor nav with gold flash ──
   document.querySelectorAll('.toc-bar a').forEach(a => {
     a.addEventListener('click', function(e) {
       e.preventDefault();
@@ -1321,6 +1412,34 @@
       }
     });
   });
+
+  // ── Theme toggle ──
+  (function () {
+    const root    = document.documentElement;
+    const sw      = document.getElementById('themeSwitch');
+    const knob    = document.getElementById('themeKnob');
+    const lbl     = document.getElementById('toggle-label');
+
+    // Logo pairs: brand-bar + footer
+    const lightLogos = [document.getElementById('logo-light'), document.getElementById('footer-logo-light')];
+    const darkLogos  = [document.getElementById('logo-dark'),  document.getElementById('footer-logo-dark')];
+
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let dark = prefersDark;
+
+    function apply() {
+      root.setAttribute('data-theme', dark ? 'dark' : 'light');
+      lbl.textContent = dark ? 'Dark' : 'Light';
+      if (knob) knob.style.transform = dark ? 'translateX(1.2rem)' : 'translateX(0)';
+      // Logo swap
+      lightLogos.forEach(el => { if (el) el.style.display = dark ? 'none' : 'inline-block'; });
+      darkLogos.forEach(el  => { if (el) el.style.display = dark ? 'inline-block' : 'none'; });
+    }
+
+    apply();
+
+    if (sw) sw.addEventListener('click', () => { dark = !dark; apply(); });
+  })();
 </script>
 </body>
 </html>

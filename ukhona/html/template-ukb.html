@@ -29,6 +29,29 @@
 <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <style>
+/*
+The key architectural notes about the Ukubona LLC template .html:
+
+**Centralized** (don't touch — these are `abikesa.github.io` hosted):
+- favicon links → `https://abikesa.github.io/favicon/assets/`
+- logo preloads → `https://abikesa.github.io/logos/assets/`
+- `../css/variables.css`, `../css/head.css`, `../css/card.css`, `../css/footer.css`
+- `../js/shared.js`
+- The bottom scaffolding: `scroll-indicator`, `bg-pattern`, `header#header`, `footer-placeholder`, feather-icons CDN
+
+**Distributed / page-local** (the `<style>` block + inline `<script>`) — this is where all the aesthetic lives and where I can work freely.
+
+The trick is: introduce Ukubona LLC branding =  the centralized asset references.The aesthetic is untouched. Here's what was added and why the split is clean:
+
+Also branding: **Centralized (zero changes):** All four `link rel=preload` logo references, the four `../css/*.css` sheets, `../js/shared.js`, feather-icons CDN, and the bottom scaffolding block (`scroll-indicator`, `bg-pattern`, `header#header`, `footer-placeholder`) — all verbatim.
+
+Aesthetic freedom: **Distributed additions (page-local `<style>` only):** **only inside the distributed layer** — the local `<style>` block and the masthead HTML — without touching
+
+
+
+*/
+
+
 /* ═══════════════════════════════════════════════════
    THEME TOKENS — Light & Dark
    Light: bone white, near-black ink, wine accents

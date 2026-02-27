@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Okubona → Okubala: The Anxiety of Influence</title>
+<title>Okubona → Okubala: The Anxiety of Influence — Ukubona LLC</title>
+
+<meta property="og:site_name" content="Ukubona LLC">
+<meta property="og:title" content="Okubona → Okubala: The Anxiety of Influence">
+<meta property="og:description" content="Keri Hilson · Beyoncé · Harold Bloom in D Major · The Tritone Assassination">
+<meta property="og:type" content="article">
+
 <!-- CENTRALIZED ASSETS (Don't update) -->
 <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" type="image/x-icon">
 <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" media="(prefers-color-scheme: light)">
@@ -21,98 +27,207 @@
 <link href="../css/footer.css" rel="stylesheet" />
 
 <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Mono:ital@0;1&display=swap');
 
+<!-- ═══════════════════════════════════════════════════
+     DISTRIBUTED / PAGE-LOCAL STYLES
+     All aesthetic lives here. Do not move to centralized.
+═══════════════════════════════════════════════════ -->
+<style>
   :root {
-    --gold: #c9a84c;
-    --rust: #b84c2b;
-    --cream: #f5f0e8;
-    --ink: #1a1208;
-    --mid: #3d2b1f;
+    --gold:       #c9a84c;
+    --gold-light: #d4a855;
+    --rust:       #b84c2b;
+    --cream:      #f5f0e8;
+    --ink:        #1a1208;
+    --mid:        #3d2b1f;
+    --muted:      rgba(245,240,232,0.45);
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
   body {
     background: var(--ink);
     color: var(--cream);
-    font-family: 'Space Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+    line-height: 1.75;
     min-height: 100vh;
-    padding: 2rem;
-    background-image: 
-      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(201,168,76,0.04) 39px, rgba(201,168,76,0.04) 40px),
+    background-image:
+      repeating-linear-gradient(0deg,  transparent, transparent 39px, rgba(201,168,76,0.04) 39px, rgba(201,168,76,0.04) 40px),
       repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(201,168,76,0.04) 39px, rgba(201,168,76,0.04) 40px);
   }
 
-  header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-    border-bottom: 1px solid var(--gold);
-    padding-bottom: 1.5rem;
+  /* ── GRAIN ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  .label {
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
-    font-style: italic;
-    color: var(--cream);
-    line-height: 1.2;
-  }
-
-  .subtitle {
-    font-size: 0.7rem;
-    color: rgba(245,240,232,0.5);
-    margin-top: 0.5rem;
-    letter-spacing: 0.1em;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    max-width: 1200px;
+  /* ── PAGE ── */
+  .page {
+    max-width: 1240px;
     margin: 0 auto;
+    padding: 0 2rem 6rem;
+    position: relative;
+    z-index: 1;
   }
 
-  .card {
+  /* ── BRAND BAR ── */
+  .brand-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.6rem 0 1.2rem;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .brand-wordmark {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  .brand-logo-img { height: 1.2rem; width: auto; }
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .brand-llc {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.44rem;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .brand-nav { display: flex; gap: 1.6rem; }
+
+  .brand-nav a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.48rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .brand-nav a:hover { color: var(--gold-light); }
+  .brand-nav a.active {
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 0.1rem;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    text-align: center;
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    margin-bottom: 3rem;
     position: relative;
   }
+
+  .masthead::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  }
+
+  .masthead-kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .masthead h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-style: italic;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+
+  .masthead h1 .sub {
+    display: block;
+    font-size: 0.52em;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+    font-style: normal;
+  }
+
+  .masthead-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.14em;
+  }
+
+  /* ── VIDEO GRID ── */
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+  }
+
+  .card { position: relative; }
 
   .card-label {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 0.6rem;
-    padding-bottom: 0.4rem;
+    padding-bottom: 0.5rem;
     border-bottom: 1px solid rgba(201,168,76,0.3);
   }
 
   .artist {
     font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    font-style: italic;
     color: var(--gold);
+    font-weight: 700;
   }
 
-  .year {
-    font-size: 0.65rem;
-    color: rgba(245,240,232,0.4);
-    letter-spacing: 0.15em;
+  .card-year {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.55rem;
+    color: var(--muted);
+    letter-spacing: 0.18em;
   }
 
   .song-title {
-    font-size: 0.7rem;
-    color: rgba(245,240,232,0.6);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.58rem;
+    color: rgba(245,240,232,0.5);
     margin-bottom: 0.8rem;
     font-style: italic;
+    line-height: 1.6;
   }
 
   .iframe-wrap {
@@ -120,52 +235,165 @@
     padding-bottom: 56.25%;
     height: 0;
     border: 1px solid rgba(201,168,76,0.2);
+    background: #0a0806;
   }
 
   .iframe-wrap iframe {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
+    border: 0;
   }
 
   .meta {
-    margin-top: 0.8rem;
+    margin-top: 0.9rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.3rem 1rem;
-    font-size: 0.6rem;
-    color: rgba(245,240,232,0.5);
+    gap: 0.25rem 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.55rem;
+    color: var(--muted);
+    line-height: 1.7;
   }
 
   .meta span { display: block; }
-  .meta strong { color: var(--gold); }
+  .meta strong { color: var(--gold); font-weight: 500; }
+  .meta .full { grid-column: 1 / -1; margin-top: 0.2rem; }
 
-  .arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: var(--rust);
-    padding: 0 0.5rem;
-    align-self: center;
-  }
-
+  /* ── ANALYSIS NOTE ── */
   .note {
     max-width: 1200px;
-    margin: 2rem auto 0;
-    padding: 1rem 1.5rem;
+    margin: 0 auto 2rem;
+    padding: 1.2rem 1.8rem;
     border-left: 2px solid var(--rust);
-    font-size: 0.7rem;
-    color: rgba(245,240,232,0.55);
-    line-height: 1.8;
+    background: rgba(184,76,43,0.05);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    color: rgba(245,240,232,0.5);
+    line-height: 1.9;
     font-style: italic;
   }
 
-  .note strong { color: var(--cream); font-style: normal; }
+  .note strong { color: var(--cream); font-style: normal; font-weight: 500; }
+  .note em { color: rgba(245,240,232,0.7); }
 
+  /* ── BRAND FOOTER ── */
+  .brand-foot {
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    padding: 2rem 0 1rem;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .brand-foot-wordmark {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.25rem;
+  }
+
+  .brand-foot-tagline {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.44rem;
+    letter-spacing: 0.26em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  .brand-foot-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.46rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    line-height: 2.4;
+  }
+
+  .brand-foot-note a { color: var(--muted); text-decoration: none; }
+  .brand-foot-note a:hover { color: var(--gold); }
+
+  .brand-foot-right { text-align: right; }
+
+  .brand-foot-logo img { height: 1.6rem; width: auto; margin-bottom: 0.6rem; }
+
+  .brand-foot-series {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.44rem;
+    letter-spacing: 0.28em;
+    color: var(--muted);
+    line-height: 2.2;
+    text-transform: uppercase;
+  }
+
+  .brand-foot-series .active { color: var(--gold); }
+
+  /* ── THEME TOGGLE ── */
+  .theme-toggle {
+    position: fixed;
+    top: 1.1rem; right: 1.5rem;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.48rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .toggle-switch {
+    position: relative;
+    width: 2.4rem; height: 1.2rem;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .toggle-knob {
+    position: absolute;
+    top: 0.18rem; left: 0.18rem;
+    width: 0.7rem; height: 0.7rem;
+    background: var(--gold);
+    transition: transform 0.25s ease;
+  }
+
+  /* light mode overrides */
+  [data-theme="light"] body {
+    background-color: #f2ede6;
+    color: #1a1008;
+    background-image:
+      repeating-linear-gradient(0deg,  transparent, transparent 39px, rgba(74,55,40,0.05) 39px, rgba(74,55,40,0.05) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(74,55,40,0.05) 39px, rgba(74,55,40,0.05) 40px);
+  }
+
+  [data-theme="light"] .toggle-knob { transform: translateX(1.2rem); }
+
+  /* logo swap */
+  #logo-dark,
+  #footer-logo-dark  { display: none; }
+
+  [data-theme="light"] #logo-light,
+  [data-theme="light"] #footer-logo-light { display: none; }
+  [data-theme="light"] #logo-dark,
+  [data-theme="light"] #footer-logo-dark  { display: inline-block; }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 700px) {
-    .grid { grid-template-columns: 1fr; }
-    .arrow { transform: rotate(90deg); }
+    .video-grid { grid-template-columns: 1fr; }
+    .brand-bar  { flex-direction: column; gap: 1rem; }
+    .brand-nav  { gap: 1rem; flex-wrap: wrap; }
+    .brand-foot { grid-template-columns: 1fr; }
+    .brand-foot-right { text-align: left; }
+    .theme-toggle { top: 0.7rem; right: 0.9rem; }
   }
 </style>
 </head>
@@ -183,63 +411,117 @@
   <header class="masthead">
     <br><br><br>
 
-<header>
-  <div class="label">The Anxiety of Influence · R&B Lineage · 2010 → 2011</div>
-  <h1>Okubona → Okubala<br><span style="font-size:0.6em; color: var(--gold)">She who sees, then counts — and bests</span></h1>
-  <div class="subtitle">Keri Hilson (2010) &nbsp;·&nbsp; Beyoncé (2011) &nbsp;·&nbsp; Harold Bloom in D Major</div>
-</header>
-
-<div class="grid">
-  <!-- Keri -->
-  <div class="card">
-    <div class="card-label">
-      <span class="artist">Keri Hilson</span>
-      <span class="year">OCT 12 · 2010</span>
-    </div>
-    <div class="song-title">"Pretty Girl Rock" — D Major · Ne-Yo / Chuck Harmony · dir. Joseph Kahn</div>
-    <div class="iframe-wrap">
-      <iframe src="https://www.youtube.com/embed/HtXOVKNazYU" 
-        title="Keri Hilson - Pretty Girl Rock" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen></iframe>
-    </div>
-    <div class="meta">
-      <span><strong>1.28M</strong> subscribers</span>
-      <span><strong>143M</strong> views</span>
-      <span><strong>Written:</strong> Ne-Yo, Chuck Harmony</span>
-      <span><strong>Choreo:</strong> Keri Hilson</span>
-      <span style="grid-column:1/-1"><strong>Concept:</strong> Hilson as a lineage — Josephine Baker → Dandridge → Diana Ross → Donna Summer → Janet Jackson → TLC. Costume = persona change = homage chain.</span>
-    </div>
+  <!-- BRAND BAR -->
+  <div class="brand-bar">
+    <a href="/" class="brand-wordmark" aria-label="Ukubona LLC">
+      <img id="logo-light" class="brand-logo-img"
+           src="https://abikesa.github.io/logos/assets/ukubona-light.png"
+           alt="Ukubona LLC" onerror="this.style.display='none'">
+      <img id="logo-dark"  class="brand-logo-img"
+           src="https://abikesa.github.io/logos/assets/ukubona-dark.png"
+           alt="Ukubona LLC" onerror="this.style.display='none'">
+      <span class="brand-name" aria-hidden="true">Ukubona</span>
+      <span class="brand-llc"  aria-hidden="true">LLC</span>
+    </a>
+    <nav class="brand-nav">
+      <a href="#">Discourse</a>
+      <a href="#" class="active">R&amp;B Lineage</a>
+      <a href="#">Colloquium</a>
+    </nav>
   </div>
 
-  <!-- Beyoncé -->
-  <div class="card">
-    <div class="card-label">
-      <span class="artist">Beyoncé</span>
-      <span class="year">OCT 16 · 2011</span>
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-kicker">The Anxiety of Influence · R&amp;B Lineage · 2010 → 2011 · Ukubona LLC</div>
+    <h1>
+      Okubona → Okubala
+      <span class="sub">She who sees, then counts — and bests</span>
+    </h1>
+    <div class="masthead-sub">Keri Hilson (2010) &nbsp;·&nbsp; Beyoncé (2011) &nbsp;·&nbsp; Harold Bloom in D Major</div>
+  </header>
+
+  <!-- VIDEO GRID -->
+  <div class="video-grid">
+
+    <!-- Keri Hilson -->
+    <div class="card">
+      <div class="card-label">
+        <span class="artist">Keri Hilson</span>
+        <span class="card-year">OCT 12 · 2010</span>
+      </div>
+      <div class="song-title">"Pretty Girl Rock" — D Major · Ne-Yo / Chuck Harmony · dir. Joseph Kahn</div>
+      <div class="iframe-wrap">
+        <iframe src="https://www.youtube.com/embed/HtXOVKNazYU"
+          title="Keri Hilson - Pretty Girl Rock"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <div class="meta">
+        <span><strong>1.28M</strong> subscribers</span>
+        <span><strong>143M</strong> views</span>
+        <span><strong>Written:</strong> Ne-Yo, Chuck Harmony</span>
+        <span><strong>Choreo:</strong> Jamaica Craft</span>
+        <span class="full"><strong>Concept:</strong> Hilson as lineage — Josephine Baker → Dandridge → Diana Ross → Donna Summer → Janet Jackson → TLC. Costume = persona change = homage chain. Key: D Major, static.</span>
+      </div>
     </div>
-    <div class="song-title">"Love On Top" — C→D♭→D→E♭→E · dir. Ed Burke & Beyoncé</div>
-    <div class="iframe-wrap">
-      <iframe src="https://www.youtube.com/embed/Ob7vObnFUJc" 
-        title="Beyoncé - Love On Top" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen></iframe>
+
+    <!-- Beyoncé -->
+    <div class="card">
+      <div class="card-label">
+        <span class="artist">Beyoncé</span>
+        <span class="card-year">OCT 16 · 2011</span>
+      </div>
+      <div class="song-title">"Love On Top" — C→D♭→D→E♭→E · dir. Ed Burke &amp; Beyoncé</div>
+      <div class="iframe-wrap">
+        <iframe src="https://www.youtube.com/embed/Ob7vObnFUJc"
+          title="Beyoncé - Love On Top"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <div class="meta">
+        <span><strong>28.8M</strong> subscribers</span>
+        <span><strong>586M</strong> views</span>
+        <span><strong>Written:</strong> Beyoncé, Terius Nash</span>
+        <span><strong>Choreo:</strong> Frank Gatson Jr.</span>
+        <span class="full"><strong>Concept:</strong> Homage to New Edition's "If It Isn't Love." 4 chromatic key changes → 4 costume changes. Each key lift = new outfit. D is the axis of symmetry (C = μ−2, E = μ+2). Tritone fingerprint: I → ♭Vø → IV.</span>
+      </div>
     </div>
-    <div class="meta">
-      <span><strong>28.8M</strong> subscribers</span>
-      <span><strong>586M</strong> views</span>
-      <span><strong>Written:</strong> Beyoncé, Terius Nash</span>
-      <span><strong>Choreo:</strong> Frank Gatson Jr.</span>
-      <span style="grid-column:1/-1"><strong>Concept:</strong> Homage to New Edition's "If It Isn't Love." 4 chromatic key changes → 4 costume changes. Each key lift = new outfit. Mya's genre-free solo dance energy re-weaponized as modulation spectacle.</span>
+
+  </div><!-- /video-grid -->
+
+  <!-- ANALYSIS NOTE -->
+  <div class="note">
+    <strong>The calculus:</strong> Keri (D Major, static key, persona-swap via costume = integral approach — total surface area of lineage) precedes Beyoncé by 12 months. Beyoncé takes the costume-change mechanism but makes it <em>derivative</em> in the literal sense: each change is a discrete step up Δk = +1 semitone, foregrounding <em>velocity</em> over enumeration. Mya (2000) is the prior node — no props, no lineage performance, pure kinaesthetic authority. <strong>Temporality (Bradford Hill's strongest criterion):</strong> Mya → Keri → Beyoncé. The later artist <em>wilfully misreads</em> the earlier one (Bloom's "clinamen") — Beyoncé absorbs the costume-change grammar and transcodes it into modulation, erasing the source signal while maximizing the gradient. <strong>The tritone fingerprint:</strong> Keri opens D → A♭ø → G; Beyoncé opens C → G♭ø → F. Structurally identical: I → ♭Vø → IV, transposed down a whole step — then Beyoncé repeats it chromatically upward <em>through</em> D and beyond. Keri's key is the axis of symmetry (μ ± 2 semitones). 143M vs 586M: the counting vindicates the anxiety.
+  </div>
+
+  <!-- BRAND FOOTER -->
+  <div class="brand-foot">
+    <div>
+      <div class="brand-foot-wordmark">Ukubona LLC</div>
+      <div class="brand-foot-tagline">to see, to witness — to look into the mirror</div>
+      <div class="brand-foot-note">
+        R&amp;B Lineage · Mya (2000) → Keri Hilson (2010) → Beyoncé (2011)<br>
+        Bradford Hill · Harold Bloom · D Major ± 2 half-steps<br>
+        GOAX Discourse · <a href="/">ukubona.llc</a> · © 2026
+      </div>
+    </div>
+    <div class="brand-foot-right">
+      <div class="brand-foot-logo">
+        <img id="footer-logo-light"
+             src="https://abikesa.github.io/logos/assets/ukubona-light.png"
+             alt="Ukubona LLC" onerror="this.style.display='none'">
+        <img id="footer-logo-dark"
+             src="https://abikesa.github.io/logos/assets/ukubona-dark.png"
+             alt="Ukubona LLC" style="display:none;" onerror="this.style.display='none'">
+      </div>
+      <div class="brand-foot-series">
+        GOAX Discourse<br>
+        <span class="active">R&amp;B Lineage</span>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="note">
-  <strong>The calculus:</strong> Keri (D Major, static key, persona-swap via costume = integral approach — total surface area of lineage) precedes Beyoncé by 12 months. Beyoncé takes the costume-change mechanism but makes it <em>derivative</em> in the literal sense: each change is a discrete step up Δk = +1 semitone, foregrounding <em>velocity</em> over enumeration. Mya (2000, "Case of the Ex") is the prior node — no props, no lineage performance, pure kinaesthetic authority. <strong>Temporality (Bradford Hill's strongest criterion):</strong> Mya → Keri → Beyoncé. The later artist <em>wilfully misreads</em> the earlier one (Bloom's "clinamen") — Beyoncé absorbs the costume-change grammar from both and transcodes it into modulation, erasing the source signal while maximizing the gradient. 143M vs 586M: the counting vindicates the anxiety.
-</div>
 
 </div><!-- /page -->
 
@@ -251,6 +533,29 @@
 <div id="footer-placeholder"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
 <script src="../js/shared.js"></script>
+
+<!-- DISTRIBUTED / PAGE-LOCAL SCRIPT -->
+<script>
+  (function () {
+    const root    = document.documentElement;
+    const toggle  = document.getElementById('themeToggle');
+    const lbl     = document.getElementById('toggle-label');
+    const llLight = [document.getElementById('logo-light'),  document.getElementById('footer-logo-light')];
+    const llDark  = [document.getElementById('logo-dark'),   document.getElementById('footer-logo-dark')];
+
+    let dark = true; // dark is default (matches body background: var(--ink))
+
+    function apply() {
+      root.setAttribute('data-theme', dark ? 'dark' : 'light');
+      lbl.textContent = dark ? 'Dark' : 'Light';
+      llLight.forEach(el => { if (el) el.style.display = dark ? 'inline-block' : 'none'; });
+      llDark.forEach(el  => { if (el) el.style.display = dark ? 'none' : 'inline-block'; });
+    }
+
+    apply();
+    toggle.addEventListener('click', () => { dark = !dark; apply(); });
+  })();
+</script>
 
 </body>
 </html>
